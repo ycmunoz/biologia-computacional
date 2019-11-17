@@ -1,0 +1,25 @@
+{% extends "nav_base.html" %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 px-1 bg-dark">
+            <div class="py-5 sticky-top flex-grow-1">
+                <div class="nav flex-sm-column">
+                    <a href="#inicio-h" class="nav-link d-none d-sm-inline">Inicio</a>
+                    <a href="#objetivos" class="nav-link">Objetivos</a>
+                    <a href="#porque-oso" class="nav-link">¿Por qué el Oso Andino?</a>
+                    <a href="#acerca-oso" class="nav-link">Acerca del Oso Andino</a>
+                    <a href="" class="nav-link">Otro</a>
+                </div>
+            </div>
+        </div>
+        <div class="col" id="main">
+			{% block section %} {% endblock %}
+        </div>
+    </div>
+</div>
+
+{% endblock%}

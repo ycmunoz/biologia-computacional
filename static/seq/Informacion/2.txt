@@ -1,0 +1,2 @@
+information: ( https://en.wikipedia.org/wiki/Cytochrome_b )
+Se encuentra involucrado en el transporte de electrones y la generacion de ATP y por lo tanto juega un rol vital en las celulas.

@@ -1,0 +1,26 @@
+{% extends "nav_base.html" %}
+
+{% block content %}
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 px-1 bg-dark">
+            <div class="py-5 sticky-top flex-grow-1">
+                <div class="nav flex-sm-column">
+                    <a href="" class="nav-link d-none d-sm-inline">Proyecto</a>
+                    <a href="#Integrantes" class="nav-link">Integrantes</a>
+                    <a href="#Repositorio" class="nav-link">Repositorio</a>
+                    <a href="#Licencia" class="nav-link">Licencia</a>
+                    <a href="#" class="nav-link">Otro</a>
+                </div>
+            </div>
+        </div>
+        <div class="col" id="main">
+			{% block section %} {% endblock %}
+        </div>
+    </div>
+</div>
+
+{% endblock%}

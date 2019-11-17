@@ -1,0 +1,71 @@
+{% extends "analisis_base.html" %}
+
+{% block section %}
+
+
+
+<div class="pagina">
+
+
+	<section class="features bg-secondary text-justify" >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+			<h2 class="section-heading">Generación del Árbol Filogenético</h2>
+				<p>
+					Un árbol filogenético es un árbol que muestra las relaciones evolutivas entre varias especies u otras entidades que se cree que tienen una ascendencia común. Un árbol filogenético es una forma de cladograma.
+				</p>
+				<p>
+					Además, un árbol filogenético, sirve para determinar el número mínimo de divisiones necesarias para obtener una célula o tejido determinado. A partir de aquí se pueden estudiar, por ejemplo, las mutaciones generadas a lo largo del proceso.
+				</p>
+			</div>
+	    </div>
+	  </div>
+	</section>
+
+	<section class="features text-justify" >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+			<h2 class="section-heading">Generación del Árbol Filogenético</h2>
+			
+			<form class="form-group" action="" method="post" name="login">
+			    {{ form.hidden_tag() }}
+				<table class="table">
+				  <tbody>
+				      <th scope="row">Selecciona el gen</th>
+				      <td>{{ form.tree_list(class_="custom-select-sm") }}</td>
+				      <td>
+				      	<button class="btn btn-warning" "type="submit">Generar Arbol</button>
+				      </td>
+				  </tbody>
+				</table>			
+
+				<p>	
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						<h4>Información del Gen</h4>
+						<ul>
+						{% for message in messages %}
+							<li>{{ info }} </li>
+						{% endfor %}
+						</ul>
+					{% endif %}
+			    {% endwith %}
+				</p>
+			</form>
+
+			<h4>Grafica</h4><br>    
+		    
+			{% if indice %}
+				<img class="mx-auto d-block" src= {{ '../static/img/bio/arbol_filogenetico'+ indice +'.png'}} alt="" width="600">
+			{% else %}
+				<img class="mx-auto d-block" src="../static/img/bio/img_default.png" alt="" width="600">
+			{% endif %}
+			</div>
+	    </div>
+	  </div>
+	</section>
+</div>
+
+{% endblock %}

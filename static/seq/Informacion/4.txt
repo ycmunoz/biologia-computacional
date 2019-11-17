@@ -1,0 +1,2 @@
+information: ( https://en.wikipedia.org/wiki/NADH_dehydrogenase )
+Es un gran complejo multienzimatico que cataliza la transferencia de electrones del NADH al coenzima Q en la cadena respiratoria.

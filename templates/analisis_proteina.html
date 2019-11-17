@@ -1,0 +1,86 @@
+{% extends "analisis_base.html" %}
+
+{% block section %}
+
+
+
+<div class="pagina">
+
+
+	<section class="features bg-info text-justify" >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+			<h2 class="section-heading">Analisis de Proteinas</h2>
+				<p>
+					Un alineamiento de secuencias en bioinformática es una forma de representar y comparar dos o más secuencias o cadenas de ADN, ARN, o estructuras primarias proteicas para resaltar sus zonas de similitud, que podrían indicar relaciones funcionales o evolutivas entre los genes o proteínas consultados.
+				</p>
+			</div>
+	    </div>
+	  </div>
+	</section>
+
+	<section class="features text-justify" >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+			<h2 class="section-heading"> Alineamiento de Secuencias </h2>
+				<form class="form-group" action="" method="post" name="login">
+				    {{ form.hidden_tag() }}
+				    <h4>Alineamiento de Secuencias</h4>
+
+					<table class="table">
+					  <tbody>
+					      <th scope="row">Selecciona la Proteina</th>
+					      <td>{{ form.protein_list(class_="custom-select-sm") }}</td>
+					      <td>
+					      	<button class="btn btn-warning" "type="submit">Buscar Homólogos</button>
+					      </td>
+					  </tbody>
+					</table>
+						<p>	
+						{% with messages = get_flashed_messages() %}
+							{% if messages %}
+								<h4>Información de la Proteina</h4>
+								<ul>
+								{% for message in messages %}
+									<!--<li>{{ message }} </li>-->
+									<li> {{ info['ID']}}</li>
+									<li style="word-break: break-all;">{{ info['Seq']}}</li>
+								{% endfor %}
+								</ul>
+							{% endif %}
+					    {% endwith %}
+						</p>
+					<br>
+
+					<h4>Resultados</h4><br>    
+				    
+				    <div style="margin: auto;">
+						<table class="table table-bordered">
+					    	<caption>Relación de proteinas homólogas</caption>
+							<thead class="thead-dark">
+								<tr>
+									<th>Accession</th>
+									<th>Descripción de la proteina</th>
+								</tr>
+							</thead>
+							<tbody>			
+								{% for item in lista %}
+								<tr>				
+									<td>{{ item[0] }}</td>
+									<td>{{ item[1] }}</td>
+								</tr>
+								{% endfor %}			
+							</tbody>  	
+					    </table>    
+				    </div>
+				</form>
+			</div>
+	    </div>
+	  </div>
+	</section>
+</div>
+
+
+{% endblock %}
