@@ -1,0 +1,10 @@
+.DS_Store
+*.pyc
+*.pyo
+*.whoosh
+*.db
+env
+dist
+*.egg-info
+venv/
+*.sqlite3
