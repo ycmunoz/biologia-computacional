@@ -4,8 +4,6 @@ from flask import render_template, flash, redirect, request
 import os
 import formsFunc as ff
 import bioFunc as bf
-#import dbDef
-from flask_sqlalchemy import SQLAlchemy
 import webbrowser as wb
 from flask_bootstrap import Bootstrap
 
@@ -13,43 +11,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'my_key'
 bootstrap = Bootstrap(app)
 
-dbdir = 'sqlite:///'+os.path.abspath(os.getcwd()) + '/static/osos.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = dbdir
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-#https://www.tutorialspoint.com/flask/flask_sqlalchemy.htm
-class Osos(db.Model):
-    id = db.Column('id', db.Integer, primary_key = True)
-    commonName = db.Column(db.String(100))
-    scientificName = db.Column(db.String(100))  
-    redList = db.Column(db.String(10))
-    link = db.Column(db.String(20))
-
-    def __init__(self, name, city, addr,pin):
-        self.commonName = commonName
-        self.scientificName = scientificName
-        self.redList = redList
-        self.link = link
-
-def setdb():
-	import pandas as pd
-	data = pd.read_csv('static/data/Osos.csv')
-	for row in data.shape[0]:
-		scientificName = data['ScientificName'].iloc[row]
-		commonName = data['CommonName'].iloc[row]
-		redList = data['IUCNRedListCategory'].iloc[row]
-		link = data['Hyperlink'].iloc[row]
-		data['commonName = commonName, scientificName = scientificName, redList = redList, link = link']
-		osos = Osos( commonName = commonName, scientificName = scientificName, redList = redList, link = link)
-		db.session.add(osos)
-		db.session.commit()
-
 # //////////////////////////////// INICIO ////////////////////////////////
 @app.route('/')
-@app.route('/Inicio/Objetivos')
 def objetivos():
-	db.create_all()
 	return render_template('index_objetivos.html', title='Inicio')
 
 # //////////////////////////////// ANALISIS ////////////////////////////////
@@ -103,29 +67,6 @@ def arbol():
 	return render_template('analisis_filogenetica.html', title='Arbol', form = form_t)
 
 # ////////////////////////////////Otras especies////////////////////////////
-
-@app.route('/Analisis/Especies', methods=('GET', 'POST'))
-def especie():
-    setdb()
-	#http://datazone.bearlife.org/species/factsheet/ + ?
-	#return render_template('analisis_especies.html', title='Especies')
-	#, osos = Osos.query.all())
-
-@app.route('/new', methods = ['GET', 'POST'])
-def new():
-	if request.method == 'POST':
-		if not request.form['commonName'] or not request.form['scientificName']:
-			flash('Please enter all the fields', 'error')
-		else:
-			osos = osos(request.form['commonName'], request.form['scientificName'],
-				request.form['redList'], request.form['link'])
-         
-			db.session.add(osos)
-			db.session.commit()
-         
-			flash('Record was successfully added')
-			return redirect('/Analisis/Especies')
-	return render_template('new.html')
 
 # //////////////////////////////// PROYECTO ////////////////////////////////
 @app.route('/Proyecto/')
