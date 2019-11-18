@@ -16,14 +16,14 @@ body {
 }
 
 a {
-  color: blue;
+  color: white;
   -webkit-transition: all .35s;
   transition: all .35s;
 }
 
 a:hover,
 a:focus {
-  color: green;
+  color: lime;
 }
 
 hr {
