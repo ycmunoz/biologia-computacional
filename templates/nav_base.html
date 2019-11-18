@@ -1,11 +1,11 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
-      {% if title %}
-        {{ title }} - Biología Computacional
-      {% else %}
-        Biología Computacional
-      {% endif %}
+{% if title %}
+{{ title }} - Biología Computacional
+{% else %}
+Biología Computacional
+{% endif %}
 {% endblock %}
 
 {% block styles %}
@@ -15,9 +15,9 @@
 <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<link rel="stylesheet"
-      href="{{url_for('.static', filename='new-age.css')}}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+  integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="{{url_for('.static', filename='new-age.css')}}">
 
 {% endblock %}
 
@@ -29,30 +29,29 @@
 
 
 {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/">
-          El Oso Andino - Tremarctos Ornatus
-        </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/Analisis/">An&aacutelisis</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/Proyecto/">Proyecto</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/Analisis/">An&aacutelisis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/Proyecto/">Proyecto</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 {% endblock %}
 
 {% block content %}
