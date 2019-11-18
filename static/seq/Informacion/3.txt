@@ -1,2 +1,3 @@
-information: ( https://es.wikipedia.org/wiki/Citocromo_c_oxidasa )
-Es una proteina transmembrana que se encuentra incluida en bicapas lipidicas de bacterias y en mitocondrias. Se trata de la ultima enzima de la cadena de transporte de electrones, recibiendo un electron de cada uno de las cuatro moleculas de citocromo c; despues, los transfiere a una molecula de oxigeno, reduciendola a dos moleculas de agua.
+NDAH deshidrogensa:
+Es un gran complejo multienzimatico que cataliza la transferencia de electrones del NADH al coenzima Q en la cadena respiratoria. Es el mayor complejo de la cadena respiratoria.
+ND1: NADH dehydrogenase subunit 1

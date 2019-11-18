@@ -6,20 +6,6 @@
 
 <div class="pagina">
 
-
-	<section class="features bg-info text-justify" >
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 mx-auto">
-			<h2 class="section-heading">Analisis de Proteinas</h2>
-				<p>
-					Un alineamiento de secuencias en bioinformática es una forma de representar y comparar dos o más secuencias o cadenas de ADN, ARN, o estructuras primarias proteicas para resaltar sus zonas de similitud, que podrían indicar relaciones funcionales o evolutivas entre los genes o proteínas consultados.
-				</p>
-			</div>
-	    </div>
-	  </div>
-	</section>
-
 	<section class="features text-justify" >
       <div class="container">
         <div class="row">
@@ -31,10 +17,16 @@
 
 					<table class="table">
 					  <tbody>
+						  <th scope="row">Selecciona la Especie</th>
+					      <td>{{ form.specie_list(class_="custom-select-sm") }}</td>
+					  </tbody>
+					  <tbody>
 					      <th scope="row">Selecciona la Proteina</th>
 					      <td>{{ form.protein_list(class_="custom-select-sm") }}</td>
-					      <td>
-					      	<button class="btn btn-warning" "type="submit">Buscar Homólogos</button>
+					  </tbody>
+					  <tbody>
+						  <td>
+					      	<button class="btn btn-warning" "type="submit">Mostrar Homólogos</button>
 					      </td>
 					  </tbody>
 					</table>
@@ -80,6 +72,20 @@
 	    </div>
 	  </div>
 	</section>
+
+	<section class="features bg-info text-justify" >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+			<h2 class="section-heading">Analisis de Proteinas</h2>
+				<p>
+					Un alineamiento de secuencias en bioinformática es una forma de representar y comparar dos o más secuencias o cadenas de ADN, ARN, o estructuras primarias proteicas para resaltar sus zonas de similitud, que podrían indicar relaciones funcionales o evolutivas entre los genes o proteínas consultados.
+				</p>
+			</div>
+	    </div>
+	  </div>
+	</section>
+
 </div>
 
 

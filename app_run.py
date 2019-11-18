@@ -18,55 +18,42 @@ def objetivos():
 
 # //////////////////////////////// ANALISIS ////////////////////////////////
 @app.route('/Analisis/', methods=('GET', 'POST'))
-@app.route('/Analisis/Gen', methods=('GET', 'POST'))
-def gen():
-	form_g = ff.gen_form()
-	lista = bf.importar_genes("IniaGeoffrensis")
-	lista_homologos = []
-	form_g.gen_list.choices = lista
-	if form_g.validate_on_submit():
-		flash('Gen escogido = %s' % (form_g.gen_list.data))
-		indice = int(form_g.gen_list.data)
-		file_homologo = form_g.gen_list.data
-		file_homologo += '.fasta'
-		lista_homologos = bf.importar_homologos_G(file_homologo)
-		info = bf.getSeq_G("IniaGeoffrensis",lista[indice-1][1])
-		return render_template('analisis_gen.html', title='Gen', form = form_g, lista=lista_homologos, info=info)
-	return render_template('analisis_gen.html', title='Gen', form = form_g)
-
 @app.route('/Analisis/Proteina', methods=('GET', 'POST'))
 def proteina():
 	form_p = ff.protein_form()
-	lista = bf.importar_proteinas("IniaGeoffrensis")
+	#lista = bf.importar_proteinas("IniaGeoffrensis")
+	especies = bf.listar_especie()
+	lista = bf.listar_gen_proteina()
 	lista_homologos = []
+	form_p.specie_list.choices = especies
 	form_p.protein_list.choices = lista
 	if form_p.validate_on_submit():
 		flash('Proteina escogida = %s' % (form_p.protein_list.data))
+		spc_indice = int(form_p.specie_list.data)
 		indice = int(form_p.protein_list.data)
-		file_homologo = form_p.protein_list.data
-		file_homologo += '.fasta'
-		lista_homologos = bf.importar_homologos_P(file_homologo)
-		info = bf.getSeq_P("IniaGeoffrensis",lista[indice-1][1])
+		lista_homologos = bf.importar_homologos_P(spc_indice,indice)
+		info = bf.getSeq_P(spc_indice,indice)
 		return render_template('analisis_proteina.html', title='Proteina', form = form_p, lista=lista_homologos, info=info)
 	return render_template('analisis_proteina.html', title='Proteina', form = form_p)
 
 @app.route('/Analisis/Arbol' , methods=('GET', 'POST'))
 def arbol():
 	form_t = ff.tree_form()
-	lista = bf.importar_genes("IniaGeoffrensis")
+	especie_lista = bf.listar_especie()
+	lista = bf.listar_gen_proteina()
+	form_t.specie_list.choices = especie_lista
 	form_t.tree_list.choices = lista
 	if form_t.validate_on_submit():
 		flash('ID: %s' %(form_t.tree_list.data))
+		espc_indice = int(form_t.specie_list.data)
 		indice = form_t.tree_list.data
-		path_arbol_num = './static/seq/Homologos/Nucleotidos'+form_t.tree_list.data
+		path_arbol_num = './static/seq/Homologos/'+bf.spec_list[espc_indice-1]+indice
 		comando = 'clustalw '+ path_arbol_num  + '.fasta'
 		os.system(comando)
-		bf.generar_arbol(path_arbol_num + '.aln', indice)
+		bf.generar_arbol(path_arbol_num + '.aln', bf.spec_list[espc_indice-1], indice)
 		info = list(open('./static/seq/Informacion/'+indice+'.txt','r'))[1]	
-		return render_template('analisis_filogenetica.html', title='Arbol', form = form_t, indice = indice, info=info)
+		return render_template('analisis_filogenetica.html', title='Arbol', form = form_t, especie = bf.spec_list[espc_indice-1], indice = indice, info=info)
 	return render_template('analisis_filogenetica.html', title='Arbol', form = form_t)
-
-# ////////////////////////////////Otras especies////////////////////////////
 
 # //////////////////////////////// PROYECTO ////////////////////////////////
 @app.route('/Proyecto/')

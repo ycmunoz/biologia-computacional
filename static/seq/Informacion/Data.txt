@@ -1,19 +1,19 @@
 #Proteina 1
-Importancia [https://es.wikipedia.org/wiki/Oocito]:
-Un ovocito u ovocito (oocyte) es un gametocito hembra o celula germinal que participa en la reproduccion. En otras palabras, es un precursor inmaduro del ovulo, o celula huevo. El ovocito se produce en el ovario del embrion durante la gametogenesis femenina. 
+Citocromo: 
+Proteoina transferidora de electrones, que contiene hierro e interviene en la respiracion celular. Esta situado en la membrana interna mitocondrial, en los tilacoides de los cloroplastos y en la membrana plasmatica de las bacterias.
+CYTB: cytochrome b
 
 #Proteina 2
-information: ( https://en.wikipedia.org/wiki/Cytochrome_b )
-Se encuentra involucrado en el transporte de electrones y la generacion de ATP y por lo tanto juega un rol vital en las celulas.
+Citocromo: 
+Proteina transferidora de electrones, que contiene hierro e interviene en la respiracion celular. Esta situado en la membrana interna mitocondrial, en los tilacoides de los cloroplastos y en la membrana plasmatica de las bacterias.
+COX1: cytochrome c oxidase subunit I
 
 #Proteina 3
-information: ( https://es.wikipedia.org/wiki/Citocromo_c_oxidasa )
-Es una proteina transmembrana que se encuentra incluida en bicapas lipidicas de bacterias y en mitocondrias. Se trata de la ultima enzima de la cadena de transporte de electrones, recibiendo un electron de cada uno de las cuatro moleculas de citocromo c; despues, los transfiere a una molecula de oxigeno, reduciendola a dos moleculas de agua.
+NDAH deshidrogensa:
+Es un gran complejo multienzimatico que cataliza la transferencia de electrones del NADH al coenzima Q en la cadena respiratoria. Es el mayor complejo de la cadena respiratoria.
+ND1: NADH dehydrogenase subunit 1
 
 #Protein 4
-information: ( https://en.wikipedia.org/wiki/NADH_dehydrogenase )
-Es un gran complejo multienzimatico que cataliza la transferencia de electrones del NADH al coenzima Q en la cadena respiratoria.
-
-#Protein 5
-information: (https://wiki2.org/es/Factor_de_elongaci%C3%B3n)
-En el proceso de sintesis de proteinas por la celula, se denomina elongacion al crecimiento en longitud de una cadena de polipeptidos mediante la formacion de enlaces que anhaden aminoacidos nuevos a la cadena. Los factores de elongacion son sustancias de naturaleza proteica imprescindibles para que el ribosoma pueda realizar este proceso. Los factores de elongacion estan presentes tanto en las celulas procariotas como en las eucariotas, en estas ultimas existen factores diferentes en el citoplasma y las mitocondrias. Se han descrito 2 factores de elongacion: eEF-1. Factor de elongacion eucariota 1. Se han descrito diversos casos de enfermedad en humanos causados por mutaciones en el gen que codifica el eEF-1. eEF-2. Factor de elongacion eucariota 2.
+ATP sintasa:
+Es una enzima transmembranal que cataliza la sintesis de ATP a partir de ADP, un grupo fosfato y la energia suministrada por un flujo de protones.
+ATP6: ATP synthase subunit 6

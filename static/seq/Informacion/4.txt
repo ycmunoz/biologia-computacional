@@ -1,2 +1,3 @@
-information: ( https://en.wikipedia.org/wiki/NADH_dehydrogenase )
-Es un gran complejo multienzimatico que cataliza la transferencia de electrones del NADH al coenzima Q en la cadena respiratoria.
+ATP sintasa:
+Es una enzima transmembranal que cataliza la sintesis de ATP a partir de ADP, un grupo fosfato y la energia suministrada por un flujo de protones.
+ATP6: ATP synthase subunit 6

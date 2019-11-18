@@ -1,2 +1,3 @@
-Importancia [https://es.wikipedia.org/wiki/Oocito]:
-Un ovocito u ovocito (oocyte) es un gametocito hembra o celula germinal que participa en la reproduccion. En otras palabras, es un precursor inmaduro del ovulo, o celula huevo. El ovocito se produce en el ovario del embrion durante la gametogenesis femenina.
+Citocromo: 
+Proteoina transferidora de electrones, que contiene hierro e interviene en la respiracion celular. Esta situado en la membrana interna mitocondrial, en los tilacoides de los cloroplastos y en la membrana plasmatica de las bacterias.
+CYTB: cytochrome b
