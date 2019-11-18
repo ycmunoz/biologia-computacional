@@ -21,7 +21,7 @@ def objetivos():
 @app.route('/Analisis/Gen', methods=('GET', 'POST'))
 def gen():
 	form_g = ff.gen_form()
-	lista = bf.importar_genes()
+	lista = bf.importar_genes("IniaGeoffrensis")
 	lista_homologos = []
 	form_g.gen_list.choices = lista
 	if form_g.validate_on_submit():
@@ -30,14 +30,14 @@ def gen():
 		file_homologo = form_g.gen_list.data
 		file_homologo += '.fasta'
 		lista_homologos = bf.importar_homologos_G(file_homologo)
-		info = bf.getSeq_G(lista[indice-1][1])
+		info = bf.getSeq_G("IniaGeoffrensis",lista[indice-1][1])
 		return render_template('analisis_gen.html', title='Gen', form = form_g, lista=lista_homologos, info=info)
 	return render_template('analisis_gen.html', title='Gen', form = form_g)
 
 @app.route('/Analisis/Proteina', methods=('GET', 'POST'))
 def proteina():
 	form_p = ff.protein_form()
-	lista = bf.importar_proteinas()
+	lista = bf.importar_proteinas("IniaGeoffrensis")
 	lista_homologos = []
 	form_p.protein_list.choices = lista
 	if form_p.validate_on_submit():
@@ -46,14 +46,14 @@ def proteina():
 		file_homologo = form_p.protein_list.data
 		file_homologo += '.fasta'
 		lista_homologos = bf.importar_homologos_P(file_homologo)
-		info = bf.getSeq_P(lista[indice-1][1])
+		info = bf.getSeq_P("IniaGeoffrensis",lista[indice-1][1])
 		return render_template('analisis_proteina.html', title='Proteina', form = form_p, lista=lista_homologos, info=info)
 	return render_template('analisis_proteina.html', title='Proteina', form = form_p)
 
 @app.route('/Analisis/Arbol' , methods=('GET', 'POST'))
 def arbol():
 	form_t = ff.tree_form()
-	lista = bf.importar_genes()
+	lista = bf.importar_genes("IniaGeoffrensis")
 	form_t.tree_list.choices = lista
 	if form_t.validate_on_submit():
 		flash('ID: %s' %(form_t.tree_list.data))

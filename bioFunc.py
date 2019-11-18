@@ -15,30 +15,28 @@ from Bio import Phylo
 import pylab
 
 
-def getSeq_P(acc_id):
-	accession = str(acc_id)
-	Entrez.email = "X@Y.com"
-	cadenaFasta = Entrez.efetch(db="protein", id=accession, rettype="fasta", retmode="text")
-	S = SeqIO.parse(cadenaFasta,"fasta")
-	for seq in S:
-		seqID = '>' + str(seq.id)
-		seqSeq =  str(seq.seq)
+def getSeq_P(especie,acc_id):
+	rec = SeqIO.parse("./static/seq/Proteinas/"+especie+".fasta", "fasta")
+	for seq in rec:
+		if seq.id == acc_id:
+			seqID = '>' +str(seq.description)
+			seqSeq =  str(seq.seq)
+			break
 	data = {'ID':seqID, 'Seq':seqSeq}
 	return data
 
-def getSeq_G(acc_id):
-	accession = str(acc_id)
-	Entrez.email = "X@Y.com"
-	cadenaFasta = Entrez.efetch(db="nucleotide", id=accession, rettype="fasta", retmode="text")
-	S = SeqIO.parse(cadenaFasta,"fasta")
-	for seq in S:
-		seqID = '>' + str(seq.id)
-		seqSeq =  str(seq.seq)
+def getSeq_G(especie,acc_id):
+	rec = SeqIO.parse("./static/seq/Genes/"+especie+".fasta", "fasta")
+	for seq in rec:
+		if seq.id == acc_id:
+			seqID = '>' +str(seq.description)
+			seqSeq =  str(seq.seq)
+			break
 	data = {'ID':seqID, 'Seq':seqSeq}
 	return data
 
-def importar_genes():
-	rec = SeqIO.parse("./static/seq/Genes/Nucleotidos.fasta", "fasta")
+def importar_genes(especie):
+	rec = SeqIO.parse("./static/seq/Genes/"+especie+".fasta", "fasta")
 	i = 1
 	out_key = []
 	out_id = []
@@ -48,8 +46,8 @@ def importar_genes():
 		i += 1
 	return list(zip(out_key, out_id))
 
-def importar_proteinas():
-	rec = SeqIO.parse("./static/seq/Proteinas/Proteinas.fasta", "fasta")
+def importar_proteinas(especie):
+	rec = SeqIO.parse("./static/seq/Proteinas/"+especie+".fasta", "fasta")
 	i = 1
 	out_key = []
 	out_id = []
@@ -87,8 +85,7 @@ def generar_arbol(file, indice):
 	dm = calculator.get_distance(alineamiento)
 
 	constructor = DistanceTreeConstructor(calculator)
-	upgma_tree = constructor.build_tree(alineamiento)
-	Phylo.draw(upgma_tree)
-	#Phylo.write(upgma_tree, 'arbolito.xml','phyloxml')
+	nj = constructor.nj(dm)	# Neighbor Joining
+	Phylo.draw(nj)
 	path = './static/img/bio/arbol_filogenetico'+ indice +'.png'
 	pylab.savefig(path, format='png')
