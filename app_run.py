@@ -60,7 +60,3 @@ def arbol():
 @app.route('/Proyecto/Integrantes')
 def integrantes():
 	return render_template('proyecto_integrantes.html', title='Integrantes')
-
-#if __name__ == '__main__':
-#	wb.open('http://127.0.0.1:5000')
-#	app.run(debug=True)
