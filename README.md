@@ -11,6 +11,7 @@ Para ejecutar el programa, ejecute el script *run.sh*
 
     $ bash run.sh
 
+Licencia
 =======================================================================================
 
 MIT License
