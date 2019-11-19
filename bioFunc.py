@@ -1,16 +1,10 @@
-#for BioPython
-from Bio.Blast import NCBIWWW
 from Bio.Seq import Seq
-from Bio import SeqIO
-from Bio.Alphabet import generic_dna, generic_protein, generic_rna
-from Bio import Entrez
-from Bio import SeqIO
-#for tree
+from Bio import SeqIO#for tree
 from Bio import AlignIO
 from Bio.Phylo.TreeConstruction import DistanceCalculator
 from Bio.Phylo.TreeConstruction import DistanceTreeConstructor
 import matplotlib
-matplotlib.use('Agg') #para resolver lo de la imagen
+matplotlib.use('Agg')
 from Bio import Phylo
 import pylab
 
@@ -65,7 +59,7 @@ def generar_arbol(file, especie, indice):
 	with open(file, "r") as aln:
 		alineamiento = AlignIO.read(aln, "clustal")
 
-	calculator = DistanceCalculator('identity')
+	calculator = DistanceCalculator('blosum62')
 	dm = calculator.get_distance(alineamiento)
 
 	constructor = DistanceTreeConstructor(calculator)
