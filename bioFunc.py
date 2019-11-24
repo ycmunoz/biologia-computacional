@@ -2,12 +2,14 @@ from Bio.Seq import Seq
 from Bio import SeqIO#for tree
 from Bio import AlignIO
 from Bio.Align.Applications import MuscleCommandline
+from Bio.Align.Applications import ClustalwCommandline
 from Bio.Phylo.TreeConstruction import DistanceCalculator
 from Bio.Phylo.TreeConstruction import DistanceTreeConstructor
 import matplotlib
 matplotlib.use('Agg')
 from Bio import Phylo
 import pylab
+from os import path
 
 spec_list = ["IniaGeoffrensis","VicugnaVicugna","ToromysRhipidurus","OreotrochilusMelanogaster"]
 
@@ -56,19 +58,42 @@ def importar_homologos_P(spc_id,acc_key):
 		out_description.append(r.description)
 	return list(zip(out_accession,out_description))
 
-def generar_arbol(file, especie, indice):
-	path = './static/seq/Homologos/'
-	fasta_file = path + especie + '.fasta'
-	cli = MuscleCommandline(input=fasta_file,format=)
-	aln_file = path + especie + '.aln'
-	with open(aln_file, "r") as aln:
-		alineamiento = AlignIO.read(aln, "clustal")
+def generar_arbol(especie, indice):
+	tree_path = './static/img/bio/'+ especie + indice +'.png'
 
-	calculator = DistanceCalculator('blosum62')
-	dm = calculator.get_distance(alineamiento)
+	if not path.exists(tree_path):
+		seq_path = './static/seq/Homologos/'
+		fasta_file = seq_path + especie + str(indice) + '.fasta'
+		aln_file = seq_path + especie + str(indice) + '.aln'
 
-	constructor = DistanceTreeConstructor(calculator)
-	nj = constructor.nj(dm)	# Neighbor Joining
-	Phylo.draw(nj)
-	path = './static/img/bio/'+especie+ indice +'.png'
-	pylab.savefig(path, format='png')
+		# Ejecuta MUSCLE para el alineamiento de secuencias homologas
+		cli = MuscleCommandline(input=fasta_file, out=aln_file, clw=True)
+		#cli = ClustalwCommandline(infile=fasta_file,outfile=aln_file)
+		cli()
+
+		with open(aln_file, "r") as aln:
+			alineamiento = AlignIO.read(aln, "clustal")
+		
+		# Blosum62 para proteinas
+		calculator = DistanceCalculator('blosum62')
+		dm = calculator.get_distance(alineamiento)
+
+		constructor = DistanceTreeConstructor(calculator)
+		# Neighbor Joining
+		nj = constructor.nj(dm)
+		
+		Phylo.draw(nj, label_func=get_label)
+		pylab.savefig(tree_path, format='png')
+
+def get_label(leaf):
+	if "Inner" in leaf.name:
+		return leaf.name
+	else:
+		from Bio import Entrez
+		Entrez.email = "victoralegre@uni.pe"
+		handle = Entrez.efetch(db="protein",id=leaf.name, rettype="gp",retmode="text")
+		result=handle.read().split('\n')
+		for line in result:
+			if "ORGANISM" in line:
+				return line.split()[1:]
+		return leaf.name

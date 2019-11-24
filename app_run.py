@@ -47,10 +47,8 @@ def arbol():
 		flash('ID: %s' %(form_t.tree_list.data))
 		espc_indice = int(form_t.specie_list.data)
 		indice = form_t.tree_list.data
-		path_arbol_num = './static/seq/Homologos/'+bf.spec_list[espc_indice-1]+indice
-		comando = 'clustalw '+ path_arbol_num  + '.fasta'
-		os.system(comando)
-		bf.generar_arbol(path_arbol_num + '.aln', bf.spec_list[espc_indice-1], indice)
+		# Se genera el arbol en .png
+		bf.generar_arbol(bf.spec_list[espc_indice-1], indice)
 		info = list(open('./static/seq/Informacion/'+indice+'.txt','r'))[1]	
 		return render_template('analisis_filogenetica.html', title='Arbol', form = form_t, especie = bf.spec_list[espc_indice-1], indice = indice, info=info)
 	return render_template('analisis_filogenetica.html', title='Arbol', form = form_t)
