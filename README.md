@@ -1,7 +1,8 @@
 Aplicación Web para el Análisis de Información Genética de Especies Endémicas del Perú
 ======================================================================================
 
-Es necesario tener instalado el gestor de paquetes de python **pip**.
+Es necesario tener instalado el gestor de paquetes de python **pip** y 
+Multiple Protein Sequence Alignment **muscle**
 
 Para instalar las dependencias, ejecute el script:
 

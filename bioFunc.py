@@ -1,6 +1,7 @@
 from Bio.Seq import Seq
 from Bio import SeqIO#for tree
 from Bio import AlignIO
+from Bio.Align.Applications import MuscleCommandline
 from Bio.Phylo.TreeConstruction import DistanceCalculator
 from Bio.Phylo.TreeConstruction import DistanceTreeConstructor
 import matplotlib
@@ -56,7 +57,11 @@ def importar_homologos_P(spc_id,acc_key):
 	return list(zip(out_accession,out_description))
 
 def generar_arbol(file, especie, indice):
-	with open(file, "r") as aln:
+	path = './static/seq/Homologos/'
+	fasta_file = path + especie + '.fasta'
+	cli = MuscleCommandline(input=fasta_file,format=)
+	aln_file = path + especie + '.aln'
+	with open(aln_file, "r") as aln:
 		alineamiento = AlignIO.read(aln, "clustal")
 
 	calculator = DistanceCalculator('blosum62')
