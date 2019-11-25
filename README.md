@@ -1,10 +1,14 @@
 Aplicación Web para el Análisis de Información Genética de Especies Endémicas del Perú
 ======================================================================================
 
-Es necesario tener instalado el gestor de paquetes de python **pip** y 
+Es necesario tener instalado el gestor de paquetes de python **pip3**, **virtualenv** y 
 Multiple Protein Sequence Alignment **muscle**
 
-Para instalar las dependencias, ejecute el script:
+	$ sudo apt-get install python3-pip
+	$ sudo pip3 install virtualenv
+	$ sudo apt-get install muscle
+
+Para instalar las demás dependencias, ejecute el script:
 
 	$ bash install_dependencies.sh
 
