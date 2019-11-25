@@ -10,6 +10,7 @@ matplotlib.use('Agg')
 from Bio import Phylo
 import pylab
 from os import path
+import networkx as nx
 
 spec_list = ["IniaGeoffrensis","VicugnaVicugna","ToromysRhipidurus","OreotrochilusMelanogaster"]
 
@@ -60,8 +61,9 @@ def importar_homologos_P(spc_id,acc_key):
 
 def generar_arbol(especie, indice):
 	tree_path = './static/img/bio/'+ especie + indice +'.png'
+	graph_path = './static/img/bio/'+ especie + indice +'g.png'
 
-	if not path.exists(tree_path):
+	if not path.exists(tree_path) or not path.exists(graph_path):
 		seq_path = './static/seq/Homologos/'
 		fasta_file = seq_path + especie + str(indice) + '.fasta'
 		aln_file = seq_path + especie + str(indice) + '.aln'
@@ -81,13 +83,23 @@ def generar_arbol(especie, indice):
 		constructor = DistanceTreeConstructor(calculator)
 		# Neighbor Joining
 		nj = constructor.nj(dm)
-		
-		Phylo.draw(nj, label_func=get_label)
+
+		net = Phylo.to_networkx(nj)
+		pos1 = nx.nx_pydot.pydot_layout(net,prog='dot')
+
+		# Dibuja Dendrograma
+		Phylo.draw(nj)
 		pylab.savefig(tree_path, format='png')
+		pylab.clf()
+		
+		# Dibuja grafo
+		nx.draw(net,pos=pos1,with_labels=True)
+		pylab.savefig(graph_path, format='png')
+		pylab.clf()
 
 def get_label(leaf):
 	if "Inner" in leaf.name:
-		return leaf.name
+		return ""
 	else:
 		from Bio import Entrez
 		Entrez.email = "victoralegre@uni.pe"
@@ -95,5 +107,5 @@ def get_label(leaf):
 		result=handle.read().split('\n')
 		for line in result:
 			if "ORGANISM" in line:
-				return line.split()[1:]
+				return leaf.name+" "+" ".join(line.split()[1:])
 		return leaf.name

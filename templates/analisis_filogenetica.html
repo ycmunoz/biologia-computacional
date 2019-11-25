@@ -46,13 +46,20 @@
 
 			<h4>Grafica</h4><br>    
 		    
-			{% if indice %}
-				<img class="mx-auto d-block" src= {{ '../static/img/bio/'+especie+ indice +'.png'}} alt="" width="600">
-			{% else %}
-				<img class="mx-auto d-block" src="../static/img/bio/img_default.png" alt="" width="600">
-			{% endif %}
+			
 			</div>
 	    </div>
+		<div class="row">
+			<div class="col-sm">
+				{% if indice %}
+					<img class="mx-auto d-block" src= {{ '../static/img/bio/'+especie+ indice +'.png'}} alt="" width="600">
+					<img class="mx-auto d-block" src= {{ '../static/img/bio/'+especie+ indice +'g.png'}} alt="" width="600">
+				{% endif %}
+			</div>
+			<div class="col-sm">
+				<!-- TODO agregar tabla -->
+			</div>
+		</div>
 	  </div>
 	</section>
 
