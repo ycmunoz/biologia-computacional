@@ -11,6 +11,7 @@ from Bio import Phylo
 import pylab
 from os import path
 import networkx as nx
+import re
 
 spec_list = ["IniaGeoffrensis","VicugnaVicugna","ToromysRhipidurus","OreotrochilusMelanogaster"]
 
@@ -96,6 +97,25 @@ def generar_arbol(especie, indice):
 		nx.draw(net,pos=pos1,with_labels=True)
 		pylab.savefig(graph_path, format='png')
 		pylab.clf()
+
+def getNombres(especie, indice):
+	seq_path = './static/seq/Homologos/'
+	fasta_file = seq_path + especie + str(indice) + '.fasta'
+	rec = SeqIO.parse(fasta_file,"fasta")
+	acc = []
+	org = []
+	for seq in rec:
+		acc.append(seq.id)
+		org.append(getOrganism(seq.description))
+	return list(zip(acc,org))
+
+def getOrganism(desc):
+	r = re.compile(r"\[[a-zA-z ]*\]")
+	rs = r.search(desc)
+	org = rs.group(0)
+	org = org.replace("[","")
+	org = org.replace("]","")
+	return org
 
 def get_label(leaf):
 	if "Inner" in leaf.name:

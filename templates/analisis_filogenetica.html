@@ -43,20 +43,37 @@
 			    {% endwith %}
 				</p>
 			</form>
-
-			<h4>Grafica</h4><br>    
-		    
-			
 			</div>
 	    </div>
 		<div class="row">
 			<div class="col-sm">
 				{% if indice %}
+					<h4>Graficas</h4>   
 					<img class="mx-auto d-block" src= {{ '../static/img/bio/'+especie+ indice +'.png'}} alt="" width="600">
 					<img class="mx-auto d-block" src= {{ '../static/img/bio/'+especie+ indice +'g.png'}} alt="" width="600">
 				{% endif %}
 			</div>
-			<div class="col-sm">
+			<div class="col-">
+				{% if nombres %}
+					<h4>Leyenda</h4> 
+					<table class="table table-sm table-bordered">
+					<thead class="thead-dark">
+						<tr>
+						<th scope="col">Accession</th>
+						<th scope="col">Organismo</th>
+						</tr>
+					</thead>
+					{% for acc,nomb in nombres %}			
+						<tbody>
+							<tr>
+							<td>{{acc}}</td>
+							<td>{{nomb}}</td>
+							</tr>
+						</tbody>
+						
+					{% endfor %}
+					</table>
+				{% endif %}
 				<!-- TODO agregar tabla -->
 			</div>
 		</div>

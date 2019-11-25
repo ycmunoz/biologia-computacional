@@ -50,7 +50,8 @@ def arbol():
 		# Se genera el arbol en .png
 		bf.generar_arbol(bf.spec_list[espc_indice-1], indice)
 		info = list(open('./static/seq/Informacion/'+indice+'.txt','r'))[1]	
-		return render_template('analisis_filogenetica.html', title='Arbol', form = form_t, especie = bf.spec_list[espc_indice-1], indice = indice, info=info)
+		nombres = bf.getNombres(bf.spec_list[espc_indice-1], indice)
+		return render_template('analisis_filogenetica.html', title='Arbol', form = form_t, especie = bf.spec_list[espc_indice-1], indice = indice, info=info,nombres=nombres)
 	return render_template('analisis_filogenetica.html', title='Arbol', form = form_t)
 
 # //////////////////////////////// PROYECTO ////////////////////////////////
